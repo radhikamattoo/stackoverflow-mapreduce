@@ -21,10 +21,9 @@ public class StackoverflowMapper extends Mapper<LongWritable, Text, Text, NullWr
     String line = value.toString();
     if(!line.startsWith("?xml") && !line.startsWith("<posts>") && !line.startsWith("</posts>")){
       Document doc = Jsoup.parse(line, "", Parser.xmlParser());
-      for (Element e : doc.select("test")) {
-          context.write(new Text(e.toString()), NullWritable.get());
-      }
-
+      // for (Element e : doc.select("test")) {
+      context.write(new Text(line.toString()), NullWritable.get());
+      // }
     }
 
   }

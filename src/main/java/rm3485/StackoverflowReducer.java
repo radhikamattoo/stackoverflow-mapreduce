@@ -13,7 +13,6 @@ public class StackoverflowReducer extends Reducer<Text, NullWritable, Text, Null
 
   // @Override
   public void reduce(Text key, NullWritable values, Context context) throws IOException, InterruptedException{
-    String output_string = key.toString();
     context.write(key, NullWritable.get());
   }
 }
