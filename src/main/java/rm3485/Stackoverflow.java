@@ -14,7 +14,7 @@ public class Stackoverflow {
 
   public static void main(String[] args) throws Exception {
     if (args.length != 2) {
-        System.err.println("Usage: PageRank <input path> <output path>");
+        System.err.println("Usage: Stackoverflow <input path> <output path>");
         System.exit(-1);
     }
     Job job = new Job();
@@ -29,7 +29,7 @@ public class Stackoverflow {
     job.setMapperClass(StackoverflowMapper.class);
     job.setReducerClass(StackoverflowReducer.class);
 
-    job.setMapOutputValueClass(Text.class);
+    job.setMapOutputValueClass(NullWritable.class);
 
     job.setOutputKeyClass(Text.class);
     job.setOutputValueClass(NullWritable.class);
