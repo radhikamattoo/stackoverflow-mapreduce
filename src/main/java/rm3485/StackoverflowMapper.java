@@ -14,6 +14,7 @@ import org.apache.hadoop.io.FloatWritable;
 import org.apache.hadoop.io.ArrayWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.mapreduce.Mapper.Context;
 
 public class StackoverflowMapper extends Mapper<LongWritable, Text, Text, NullWritable> {
 
