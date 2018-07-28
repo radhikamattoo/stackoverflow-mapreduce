@@ -11,7 +11,7 @@ import org.jsoup.*;
 
 public class StackoverflowReducer extends Reducer<Text, NullWritable, Text, NullWritable> {
 
-  // @Override
+  @Override
   public void reduce(Text key, NullWritable values, Context context) throws IOException, InterruptedException{
     context.write(key, NullWritable.get());
   }
