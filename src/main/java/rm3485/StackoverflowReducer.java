@@ -15,6 +15,6 @@ public class StackoverflowReducer extends Reducer<Text, NullWritable, Text, Null
 
   @Override
   public void reduce(Text key, Iterable<NullWritable> values, Context context) throws IOException, InterruptedException{
-    context.write(new Text("HELLO WORLD"), NullWritable.get());
+    context.write(key, NullWritable.get());
   }
 }

@@ -15,7 +15,8 @@ public class StackoverflowMapper extends Mapper<LongWritable, Text, Text, NullWr
   @Override
   public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
     String line = value.toString();
-    if(!line.startsWith("?xml") && !line.startsWith("<posts>") && !line.startsWith("</posts>")){
+    if(line.contains("<row")){
+      line = line.replace("\n", "").replace("\r", "");
       Document doc = Jsoup.parse(line, "", Parser.xmlParser());
       Element row = doc.getElementsByTag("row").first();
       Attributes attributes = row.attributes();
@@ -25,11 +26,11 @@ public class StackoverflowMapper extends Mapper<LongWritable, Text, Text, NullWr
         String score = attributes.get("Score");
         String title = attributes.get("Title");
         String tags = attributes.get("Tags");
-        String body = Jsoup.parse(attributes.get("Body"),"", Parser.xmlParser()).text();
+        String body = Jsoup.parse(attributes.get("Body"),"", Parser.xmlParser()).text().replace("\n", "").replace("\r", "");
         if(tags.length() > 0){
           tags = tags.replaceAll("<", "").replaceAll(">", " ").trim();
           if(id.length() != 0 && score.length() != 0 && title.length() != 0 && body.length() != 0 && !title.contains(",")){
-            String output = id + "," + score + "," + title + "," + tags + "," + body + "\n";
+            String output = id + "," + score + "," + title + "," + tags + "," + body;
             context.write(new Text(output), NullWritable.get());
           }
         }
