@@ -7,15 +7,9 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.nodes.Attributes;
 import org.jsoup.nodes.Attribute;
-import org.apache.hadoop.io.IntWritable;
-import org.apache.hadoop.io.LongWritable;
-import org.apache.hadoop.io.NullWritable;
-import org.apache.hadoop.io.FloatWritable;
-import org.apache.hadoop.io.ArrayWritable;
-import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
-import org.apache.hadoop.mapreduce.Mapper.Context;
-
+import org.apache.hadoop.io.*;
+import java.io.*; 
 public class StackoverflowMapper extends Mapper<LongWritable, Text, Text, NullWritable> {
 
   @Override
