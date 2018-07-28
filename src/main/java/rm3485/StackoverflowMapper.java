@@ -9,7 +9,7 @@ import org.jsoup.nodes.Attributes;
 import org.jsoup.nodes.Attribute;
 import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.io.*;
-import java.io.*; 
+import java.io.*;
 public class StackoverflowMapper extends Mapper<LongWritable, Text, Text, NullWritable> {
 
   @Override

@@ -9,12 +9,12 @@ import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.*;
-import org.jsoup.*;
-import java.io.*; 
+// import org.jsoup.*;
+import java.io.*;
 public class StackoverflowReducer extends Reducer<Text, NullWritable, Text, NullWritable> {
 
   @Override
   public void reduce(Text key, Iterable<NullWritable> values, Context context) throws IOException, InterruptedException{
-    context.write(key, NullWritable.get());
+    context.write(new Text("HELLO WORLD"), NullWritable.get());
   }
 }
